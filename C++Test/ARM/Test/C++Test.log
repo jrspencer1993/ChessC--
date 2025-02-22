@@ -1,0 +1,8 @@
+﻿  board.cpp
+  main.cpp
+  game.cpp
+  piece.cpp
+  piecesManager.cpp
+  textureManager.cpp
+  Generating Code...
+C++Test\ARM\Test\board.obj : fatal error LNK1112: module machine type 'x86' conflicts with target machine type 'ARM'
