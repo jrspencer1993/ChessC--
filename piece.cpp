@@ -1,9 +1,8 @@
-#include <SDL.h>
-#include <SDL_image.h>
 #include "Piece.h"
-#include <SDL_render.h>
 #include "TextureManager.h"
+#include "PiecesDef.h"
 #include <SDL_error.h>
+#include <SDL_image.h>
 #include <iostream>
 
 namespace GameSystem {
@@ -33,7 +32,7 @@ namespace GameSystem {
     }
     void Piece::init(const char* p_FilePath, int p_PieceSize)
     {
-        m_PieceTexture = TextureManager::GetTexture(GetRenderer(), p_FilePath);
+        m_PieceTexture = TextureManger::GetTexture(GetRenderer(), p_FilePath);
         m_PieceProperty->w = m_PieceProperty->h = p_PieceSize;
     }
     void Piece::Log()
@@ -80,10 +79,10 @@ namespace GameSystem {
 
     void Piece::draw()
     {
-        TextureManager::Render(GetRenderer(), m_PieceTexture, m_PieceProperty);
+        TextureManger::Render(GetRenderer(), m_PieceTexture, m_PieceProperty);
         if (m_PieceTexture)
         {
-            TextureManager::Render(GetRenderer(), m_PieceTexture, m_PieceProperty);
+            TextureManger::Render(GetRenderer(), m_PieceTexture, m_PieceProperty);
         }
         else {
             // std::cout<<SDL_GetError();

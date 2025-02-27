@@ -4,7 +4,7 @@
 
 namespace GameSystem
 {
-    class TextureManager
+    class TextureManger
     {
     public:
         static SDL_Texture* GetTexture(SDL_Renderer* p_Renderer, const char* p_FilePath);

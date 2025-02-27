@@ -1,12 +1,11 @@
-#include <SDL.h>
+
 #include <SDL_image.h>
-#include <SDL_render.h>
 #include "TextureManager.h"
 #include <cstddef>
 
 namespace GameSystem
 {
-    SDL_Texture* TextureManager::GetTexture(SDL_Renderer* p_Renderer, const char* p_FilePath)
+    SDL_Texture* TextureManger::GetTexture(SDL_Renderer* p_Renderer, const char* p_FilePath)
     {
         SDL_Texture* _texture = IMG_LoadTexture(p_Renderer, p_FilePath);
         if (_texture == NULL)
@@ -18,12 +17,12 @@ namespace GameSystem
         return _texture;
     }
 
-    void TextureManager::Render(SDL_Renderer* p_Renderer, SDL_Texture* p_Texture,
+    void TextureManger::Render(SDL_Renderer* p_Renderer, SDL_Texture* p_Texture,
         SDL_Rect* p_DsntRect)
     {
 
         //       SDL_Rect _srcRect = {0,0,60,60}; // later fix it this manually hard coded
         SDL_RenderCopy(p_Renderer, p_Texture, NULL, p_DsntRect);
     }
-		
+
 }

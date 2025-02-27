@@ -1,16 +1,14 @@
-
-#include <SDL.h>
-#include <SDL_image.h>
 #include "Game.h"
-#include <SDL_gamecontroller.h>
+#include "Menu.h"
 
-#define WINDOW_WIDTH 600
-#define WINDOW_HEIGHT 600
+const int g_WINDOW_WIDTH = 600;
+const int g_WINDOW_HEIGHT = 600;
+
+static GameSystem::Game* gGame = nullptr;
 
 inline void init();
 inline void GameLoop();
 inline void close();
-
 
 int main(int argc, char* argv[])
 {
@@ -24,24 +22,48 @@ int main(int argc, char* argv[])
 inline void init() {
     SDL_Init(SDL_INIT_VIDEO);
     IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG); // I am plaining on using PNG and JPEG picture
+    TTF_Init();
+    gGame = new GameSystem::Game("Chess", g_WINDOW_WIDTH, g_WINDOW_HEIGHT);
 }
+
+
 
 inline void GameLoop()
 {
-    GameSystem::Game Game("Chess", WINDOW_WIDTH, WINDOW_HEIGHT);
-    while (Game.isRunning())
+    GameSystem::Menu menu(gGame->getRenderer());
+    bool MenuRunning = true;
+    while (MenuRunning)
     {
-        Game.pollEvent();
-        Game.update();
-        Game.render();
+        switch (menu.getMenuState())
+        {
+        case Menu_State::NONE:
 
+            menu.DisplayMenu();
+            break;
+
+        case Menu_State::PLAY:
+            gGame->resetGame();
+            while (gGame->isRunning())
+            {
+                gGame->pollEvent();
+                gGame->update();
+                gGame->render();
+                if (gGame->isRunning() == false)
+                    break;
+            }
+            menu.DisplayGameOver(gGame->getWinner().c_str());
+            break;
+        case Menu_State::QUIT:
+            MenuRunning = false;
+            break;
+        }
     }
-
 }
 
 inline void close()
 {
+    delete gGame;
     SDL_Quit();
     IMG_Quit();
-
 }
+// now we have successfully create wind

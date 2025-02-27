@@ -1,34 +1,47 @@
 #pragma once
+#include <string>
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 #include "Board.h"
 #include "PiecesManager.h"
+#include "Button.h"
 
 namespace GameSystem
 {
     class Game
     {
     public:
+        // Public Functions (main functions)
         Game(const char* p_Title, int p_Width, int p_Height);
         ~Game();
         void update();
         void pollEvent();
         bool isRunning()const;
+        void resetGame();
         void render();
+        std::string getWinner() { return m_BoardPieces->GameOver(); }
+
+        // getter
+        SDL_Renderer* getRenderer()const;
+        SDL_Window* getWindow()const { return m_Window; }
     private:
+        // Private Functions
         void init();
-        void drawBoard();
         void updateMousePosition();
         void getMousePosition(int* x, int* y);
-        bool m_Running = false;
-
-        Board* m_Board;
+    private:
+        // Private Variable
         bool m_Is_Selected;
         int* m_CurrentmouseX;
         int* m_CurrentmouseY;
+        bool m_Running = false;
+
+        //class/struct type varible and gfx
         SDL_Window* m_Window;
         SDL_Renderer* m_Renderer;
         SDL_Event* m_Event;
+        Board* m_Board;
         PiecesManager* m_BoardPieces;
     };
 };

@@ -1,7 +1,4 @@
 #include "Game.h"
-#include <SDL_events.h>
-#include "TextureManager.h"
-#include "PiecesManager.h"
 #include <iostream>
 
 namespace GameSystem
@@ -16,6 +13,8 @@ namespace GameSystem
         m_Running = true;
         m_Is_Selected = false;
     }
+
+    // Constructor and Destructor
     Game::Game(const char* p_Title, int p_Width, int p_Height)
     {
         init();
@@ -36,9 +35,22 @@ namespace GameSystem
         SDL_DestroyRenderer(m_Renderer);
         SDL_DestroyWindow(m_Window);
     }
+
+    // Private Fuction
+    void  Game::updateMousePosition()
+    {
+        SDL_GetMouseState(m_CurrentmouseX, m_CurrentmouseY);
+    }
+
+    // Public Functions
     bool  Game::isRunning() const
     {
         return m_Running;
+    }
+    void Game::resetGame()
+    {
+        m_Running = true;
+        m_BoardPieces->resetPieces();
     }
     void Game::pollEvent()
     {
@@ -61,16 +73,16 @@ namespace GameSystem
                 break;
             }
         }
-    }
-    void  Game::updateMousePosition()
-    {
-        SDL_GetMouseState(m_CurrentmouseX, m_CurrentmouseY);
+
     }
     void Game::update()
     {
         // lets add some movement
         updateMousePosition();
         m_BoardPieces->updateBoardPieces(m_CurrentmouseX, m_CurrentmouseY);
+        m_Board->UpdatePlayer(m_BoardPieces->getPlayer());
+        if (m_Running)
+            m_Running = (m_BoardPieces->GameOver() != "") ? false : true;
     }
     void Game::render()
     {
@@ -78,14 +90,21 @@ namespace GameSystem
         SDL_SetRenderDrawColor(m_Renderer, 255, 255, 0, 255);
         // clearing Winodw from previous drawn objects
         SDL_RenderClear(m_Renderer);
-        // draw from their
+
+        // draw Objects
+
         m_Board->drawBoard();
         m_BoardPieces->drawPieces();
+
         SDL_RenderPresent(m_Renderer);
-        //  SDL_Delay(5000);        
     }
 
+    SDL_Renderer* Game::getRenderer() const
+    {
+        return m_Renderer;
+    }
 
+    // Getter
     void Game::getMousePosition(int* x, int* y)
     {
         SDL_GetMouseState(x, y);

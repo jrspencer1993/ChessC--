@@ -1,10 +1,13 @@
 #include "PiecesManager.h"
+#include "PiecesDef.h"
+#include "Moves.h"
 #include <iostream>  //for debug 
 
 namespace GameSystem
 {
     void PiecesManager::init()
     {
+        m_IsLastBlackMove = false;
         m_LastPiece_Col = -1;
         m_LastPiece_Row = -1;
         m_PieceSelectState = false;
@@ -27,6 +30,11 @@ namespace GameSystem
             {{  6,  6,  6,  6,  6,  6,  6,  6 }},
             {{  5,  4,  3,  2,  1,  3,  4,  5 }}
         } };
+    }
+
+    bool PiecesManager::isBlack()
+    {
+        return (m_BoardPieces[m_LastPiece_Row][m_LastPiece_Col] < 0);
     }
 
     PiecesManager::PiecesManager(SDL_Renderer* p_Renderer, int BoardSize)
@@ -109,6 +117,51 @@ namespace GameSystem
     {
         m_BoardPieceSize = p_PieceSize;
     }
+
+    std::string PiecesManager::GameOver()
+    {
+        bool WhiteKing = false;
+        bool BlackKing = false;
+        for (int row = 0; row < MAX_PIECES_LINE; row++)
+        {
+            for (int col = 0; col < MAX_PIECES_LINE; col++)
+            {
+                if (m_BoardPieces[row][col] == PIECES_TYPE::WHITE_KING)
+                {
+                    WhiteKing = true;
+                }
+                if (m_BoardPieces[row][col] == PIECES_TYPE::BLACK_KING)
+                {
+                    BlackKing = true;
+                }
+
+            }
+        }
+        if (!WhiteKing)
+        {
+            return "Black";
+        }
+        if (!BlackKing)
+        {
+            return "White";
+        }
+        return "";
+    }
+
+    void PiecesManager::resetPieces()
+    {
+        initDefaultBoard();
+        CalculatePieces();
+    }
+    Player PiecesManager::getPlayer() const
+    {
+        Player _player(m_BoardPieces);
+        _player.isSeleted = m_PieceSelectState;
+        _player.row = m_LastPiece_Row;
+        _player.col = m_LastPiece_Col;
+
+        return _player;
+    }
     void PiecesManager::drawPieces()
     {
         for (int row = 0; row < MAX_PIECES_LINE; row++)
@@ -129,7 +182,6 @@ namespace GameSystem
         if (m_PieceSelectState)
         {
             m_DrawPieces[m_LastPiece_Row][m_LastPiece_Col].setPosition(_X, _Y);
-
         }
     }
 
@@ -147,15 +199,34 @@ namespace GameSystem
             m_PieceSelectState = false;
             int  _newCol = *p_MouseX / m_BoardPieceSize;
             int  _newRow = *p_MouseY / m_BoardPieceSize;
-            m_BoardPieces[_newRow][_newCol] = m_BoardPieces[m_LastPiece_Row][m_LastPiece_Col];
-            if (m_LastPiece_Col != _newCol || m_LastPiece_Row != _newRow)
-            {
-                m_BoardPieces[m_LastPiece_Row][m_LastPiece_Col] = PIECES_TYPE::EMPTY;
-            }
 
-            m_DrawPieces[m_LastPiece_Row][m_LastPiece_Col].setTextureFromPath(EMPTY_PATH);
+            bool _tempColor = m_IsLastBlackMove;
+
+            // fix error regarding empty of the piece
+            if (Moves::VaildMove(m_BoardPieces, PiecePosition(m_LastPiece_Row, m_LastPiece_Col), PiecePosition(_newRow, _newCol)) && (m_BoardPieces[m_LastPiece_Row][m_LastPiece_Col] != PIECES_TYPE::EMPTY))
+            {
+                if (m_IsLastBlackMove == isBlack())
+                {
+                    m_BoardPieces[_newRow][_newCol] = m_BoardPieces[m_LastPiece_Row][m_LastPiece_Col];
+                    _tempColor = !m_IsLastBlackMove;
+                }
+            }
+            else
+            {
+                _newRow = m_LastPiece_Row;
+                _newCol = m_LastPiece_Col;
+            }
+            if ((m_LastPiece_Col != _newCol || m_LastPiece_Row != _newRow))
+            {
+                if (m_IsLastBlackMove == isBlack())
+                {
+                    m_BoardPieces[m_LastPiece_Row][m_LastPiece_Col] = PIECES_TYPE::EMPTY;
+                }
+            }
+            m_IsLastBlackMove = _tempColor;
             CalculatePieces();
+            GameOver();
+
         }
     }
-
 };
