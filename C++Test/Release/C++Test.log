@@ -1,6 +1,39 @@
-﻿  main.cpp
+﻿  Bishop.cpp
+  board.cpp
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(129,70): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(150,88): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(159,88): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(168,88): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(177,88): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(186,88): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(195,88): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(204,88): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(213,88): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(222,88): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(249,69): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(266,69): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(285,69): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(302,69): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(332,64): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(352,64): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(373,64): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp(393,64): warning C4805: '!=': unsafe mix of type 'bool' and type 'int' in operation
+  button.cpp
+  King.cpp
+  Knight.cpp
+  main.cpp
+  game.cpp
+  menu.cpp
+  moves.cpp
+  Pawn.cpp
+  piece.cpp
+  piecesManager.cpp
+  Queen.cpp
+  Rook.cpp
+  textureManager.cpp
+  ui.cpp
   Generating code
   Previous IPDB not found, fall back to full compilation.
-  All 4 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 244 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
-  C++Test.vcxproj -> C:\Users\Broke\OneDrive\Documents\ChessC++\C++Chess\Release\C++Test.exe
+  C++Test.vcxproj -> C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\Release\C++Test.exe

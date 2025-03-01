@@ -1,1 +1,16 @@
-C:\Users\Broke\OneDrive\Documents\ChessC++\C++Chess\main.cpp;C:\Users\Broke\OneDrive\Documents\ChessC++\C++Chess\C++Test\Release\main.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\Bishop.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\Bishop.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\board.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\board.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\button.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\button.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\King.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\King.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\Knight.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\Knight.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\main.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\main.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\game.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\game.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\menu.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\menu.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\moves.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\moves.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\Pawn.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\Pawn.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\piece.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\piece.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\piecesManager.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\piecesManager.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\Queen.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\Queen.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\Rook.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\Rook.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\textureManager.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\textureManager.obj
+C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\ui.cpp;C:\Users\Broke\GitTest\GitChess\ChessC--\C++Chess\C++Test\Release\ui.obj
