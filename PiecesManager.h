@@ -5,11 +5,19 @@
 #include "Board.h"
 #include <array>
 #include <string>
+#include "PiecesDef.h"
+#include "Moves.h"
 
 
 namespace GameSystem {
     class PiecesManager {
+
+        //const int MAX_PIECES_LINE = 8; // Size of the board (8x8)
+        //const int WHITE_KING = 1; // Representing the white king as 1
+
     public:
+        //std::array<std::array<int, MAX_PIECES_LINE>, MAX_PIECES_LINE> m_BoardPieces;
+
         // constructor and destoryer
         PiecesManager(SDL_Renderer* p_Renderer, int BoardSize);
         ~PiecesManager() {}
@@ -27,6 +35,9 @@ namespace GameSystem {
 
         // Getter
         Player getPlayer() const;
+
+        // Add the declaration of swapRandomWhitePieces() here
+        bool swapRandomWhitePieces();
 
     private:
         // Private Functions 
@@ -48,4 +59,6 @@ namespace GameSystem {
         Piece** m_DrawPieces;
         std::array<std::array<int, MAX_PIECES_LINE>, MAX_PIECES_LINE> m_BoardPieces;
     };
+
+
 };

@@ -9,8 +9,14 @@ namespace GameSystem
 {
     class Board {
     public:
+
         // constructor
-        Board(int p_SizeBoard, SDL_Renderer* p_Renderer); // i will only drawSquare   
+        Board(int p_SizeBoard, SDL_Renderer* p_Renderer); // i will only drawSquare 
+
+        int GetBoardSize() const { return m_BoardSize; }
+        int GetPiecesSize() const { return m_PiecesSize; }
+
+
         // Public Function
         void drawBoard();
         void UpdatePlayer(Player p_Player); // handle player pieces hints
@@ -39,4 +45,4 @@ namespace GameSystem
         int m_PiecesSize = 75;
         int m_BoardSize;
     };
-}
+};

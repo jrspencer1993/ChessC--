@@ -88,6 +88,7 @@ namespace GameSystem
     {
         // Setting BackGround Winodow Color 
         SDL_SetRenderDrawColor(m_Renderer, 255, 255, 0, 255);
+
         // clearing Winodw from previous drawn objects
         SDL_RenderClear(m_Renderer);
 

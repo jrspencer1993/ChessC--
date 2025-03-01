@@ -44,7 +44,7 @@ void GameSystem::Menu::DisplayGameOver(std::string p_Winner)
 
 }
 
-/*void Candy::Menu::Update()
+/*void GameSystem::Menu::Update()
 {
 }
 */

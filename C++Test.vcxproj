@@ -329,6 +329,7 @@
     <ClInclude Include="Piece.h" />
     <ClInclude Include="PiecesDef.h" />
     <ClInclude Include="PiecesManager.h" />
+    <ClInclude Include="SDLText.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="UI.h" />
   </ItemGroup>

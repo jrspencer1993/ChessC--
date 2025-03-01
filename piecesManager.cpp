@@ -2,9 +2,13 @@
 #include "PiecesDef.h"
 #include "Moves.h"
 #include <iostream>  //for debug 
+#include <vector>
+#include <cstdlib>  // For rand() and srand()
+#include <ctime> 
 
 namespace GameSystem
 {
+
     void PiecesManager::init()
     {
         m_IsLastBlackMove = false;
@@ -20,7 +24,8 @@ namespace GameSystem
 
     void PiecesManager::initDefaultBoard()
     {
-        m_BoardPieces = { {
+        m_BoardPieces = { 
+            {
             {{ -5, -4, -3, -2, -1, -3, -4, -5 }},
             {{ -6, -6, -6, -6, -6, -6, -6, -6 }},
             {{  0,  0,  0,  0,  0,  0,  0,  0 }},
@@ -29,8 +34,72 @@ namespace GameSystem
             {{  0,  0,  0,  0,  0,  0,  0,  0 }},
             {{  6,  6,  6,  6,  6,  6,  6,  6 }},
             {{  5,  4,  3,  2,  1,  3,  4,  5 }}
-        } };
+            } 
+        
+        };
+
+        //After Initializing the default board, we can call the random swap
+        swapRandomWhitePieces();
     }
+
+    bool PiecesManager::swapRandomWhitePieces()
+    {
+        std::vector<std::pair<int, int>> whitePieces;
+        bool firstPieceIsPawn = false; // Flag to track if the first selected piece is a pawn
+
+        // Collect positions of all white pieces, excluding the white king
+        for (int row = 0; row < MAX_PIECES_LINE; ++row) {
+            for (int col = 0; col < MAX_PIECES_LINE; ++col) {
+                int piece = m_BoardPieces[row][col];
+
+                // Check if the piece is a white piece but not the white king
+                if (piece > 0 && piece != PIECES_TYPE::WHITE_KING) {
+                    whitePieces.push_back({ row, col });
+                }
+            }
+        }
+
+        // Ensure that there are at least two white pieces to swap
+        if (whitePieces.size() < 2) {
+            return false; // Not enough white pieces to swap
+        }
+
+        // Seed the random number generator
+        srand(static_cast<unsigned int>(time(0)));
+
+        // Randomly select the first white piece
+        int idx1 = rand() % whitePieces.size();
+        int row1 = whitePieces[idx1].first;
+        int col1 = whitePieces[idx1].second;
+        int firstPiece = m_BoardPieces[row1][col1];
+
+        // Check if the first piece is a white pawn
+        if (firstPiece == PIECES_TYPE::WHITE_PAWN) {
+            firstPieceIsPawn = true;
+        }
+
+        // Now, select the second piece, ensuring it's not a pawn if the first piece is a pawn
+        int idx2 = rand() % whitePieces.size();
+        while (idx1 == idx2 || (firstPieceIsPawn && m_BoardPieces[whitePieces[idx2].first][whitePieces[idx2].second] == PIECES_TYPE::WHITE_PAWN)) {
+            // Keep selecting until it's a valid second piece (not a pawn if the first was a pawn)
+            idx2 = rand() % whitePieces.size();
+        }
+
+        // Get the positions of the two pieces to swap
+        int row2 = whitePieces[idx2].first;
+        int col2 = whitePieces[idx2].second;
+
+        // Swap the pieces on the board
+        std::swap(m_BoardPieces[row1][col1], m_BoardPieces[row2][col2]);
+
+        // Update the board pieces to reflect the swap
+        CalculatePieces();
+
+        return true; // Successfully swapped two pieces
+    }
+
+
+
 
     bool PiecesManager::isBlack()
     {

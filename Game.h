@@ -25,11 +25,13 @@ namespace GameSystem
         // getter
         SDL_Renderer* getRenderer()const;
         SDL_Window* getWindow()const { return m_Window; }
+
     private:
         // Private Functions
         void init();
         void updateMousePosition();
         void getMousePosition(int* x, int* y);
+
     private:
         // Private Variable
         bool m_Is_Selected;
